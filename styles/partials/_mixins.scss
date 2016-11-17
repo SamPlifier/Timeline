@@ -1,0 +1,17 @@
+@mixin media($format) {
+  @if $format == mobile {
+    @media (max-width: 720px) {
+      @content;
+    }
+  }
+  @if $format == tablet {
+    @media (max-width: 1080px) and (min-width: 720px) {
+      @content;
+    }
+  }
+  @if $format == desktop {
+    @media (min-width: 1080px) {
+      @content;
+    }
+  }
+}

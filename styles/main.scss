@@ -1,0 +1,190 @@
+@import 'partials/reset';
+@import 'partials/variables';
+@import 'partials/mixins';
+
+ul {
+    list-style: none;
+}
+
+h2 {
+    line-height: 30px;
+    padding-bottom: 10px;
+    font-family: Arial;
+    font-weight: 300;
+}
+
+p {
+    margin-top: 5px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #a6caec;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.entryInfo {
+    display: flex;
+}
+
+.timeComponents {
+    width: 150px;
+    text-align: right;
+    font-size: 1.2rem;
+    color: #6f6f6f;
+
+    span {
+        &.date {
+            font-size: 1rem;
+            color: #bbb;
+        }
+
+        &.time {
+            font-size: 2rem;
+        }
+    }
+}
+
+.line {
+    position: relative;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 7px;
+    margin: 0 50px 0 30px;
+    background: $lineColor;
+
+    i {
+        align-items: center;
+        background: $iconColor;
+        border-radius: 50%;
+        border: 5px solid #afdcf8;
+        color: white;
+        display: flex;
+        height: 50px;
+        justify-content: center;
+        position: relative;
+        top: -25px;
+        width: 50px;
+        z-index: 2;
+    }
+}
+
+.entryText {
+    position: relative;
+    width: 85%;
+    padding: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    line-height: 22px;
+    color: #fff;
+
+    .triangleLeft {
+        position: absolute;
+        top: 10px;
+        left: -10px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 12px 12px 12px 0;
+    }
+}
+
+.mobile {
+    i {
+        font-size: 35px;
+    }
+}
+
+.desktop {
+    i {
+        padding-top: 5px;
+        font-size: 25px;
+    }
+}
+
+.light {
+    .time {
+        color: $lightEntryColor;
+    }
+
+    .triangleLeft {
+        border-color: $tp $lightEntryColor $tp $tp;
+    }
+
+    .entryText {
+        background: $lightEntryColor;
+    }
+}
+
+.dark {
+    .time {
+        color: $darkEntryColor;
+    }
+
+    .triangleLeft {
+        border-color: $tp $darkEntryColor $tp $tp;
+    }
+
+    .entryText {
+        background: $darkEntryColor;
+    }
+}
+@include media(desktop) {
+    .timeline {
+        width: 75%;
+    }
+}
+@include media(tablet) {
+    body {
+        padding: 50px 20px 0;
+    }
+
+    .timeComponents {
+        width: 140px;
+    }
+
+    .timeline {
+        width: 100%;
+    }
+}
+@include media(mobile) {
+    body {
+        padding: 0;
+    }
+
+    .timeline {
+        width: 100%;
+    }
+
+    .entryInfo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeComponents {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: -20px;
+        padding: 10px;
+    }
+
+    .line {
+        width: 0;
+
+        i {
+            top: 10px;
+        }
+    }
+
+    .triangleLeft {
+        display: none;
+    }
+}
